@@ -126,7 +126,8 @@ func getBackendConfig(nodeObj *v1.Node) (map[string]string, error) {
 
 	// Enable and publish the natt-discovery-port by default.
 	if _, ok := backendConfig[submv1.NATTDiscoveryPortConfig]; !ok {
-		backendConfig[submv1.NATTDiscoveryPortConfig] = submv1.DefaultNATTDiscoveryPort
+		//backendConfig[submv1.NATTDiscoveryPortConfig] = submv1.DefaultNATTDiscoveryPort
+		backendConfig[submv1.NATTDiscoveryPortConfig] = os.Getenv("CE_NAT_DISCOVERY")
 	}
 
 	// TODO: we should allow the cable drivers to capture and expose BackendConfig settings, instead of doing
